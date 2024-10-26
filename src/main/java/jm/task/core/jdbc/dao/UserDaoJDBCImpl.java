@@ -11,19 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    Util util = new Util();
+    private Util util;
 
-    public UserDaoJDBCImpl() {
-
+    public UserDaoJDBCImpl(Util util) {
+        this.util = util;
     }
 
     public void createUsersTable() {
         try (PreparedStatement preparedStatement =
-                     util.getConnection().prepareStatement("CREATE TABLE users " +
-                             "(id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, " +
+                     util.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS users " +
+                             "(id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL, " +
                              "name VARCHAR(45) NOT NULL, " +
                              "lastName VARCHAR(45) NOT NULL, " +
-                             "age INT NOT NULL);")) {
+                             "age TINYINT NOT NULL);")) {
             preparedStatement.executeUpdate();
             System.out.println("Таблица создана");
         } catch (SQLException e) {
@@ -41,16 +41,8 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO users(name, lastName, age) VALUES(\"");
-        sb.append(name);
-        sb.append("\", \"");
-        sb.append(lastName);
-        sb.append("\", ");
-        sb.append((byte) age);
-        sb.append(");");
         try (Statement statement = util.getConnection().createStatement()) {
-            statement.execute(sb.toString());
+            statement.execute("INSERT INTO users(name, lastName, age) VALUES(\"" + name + "\", \"" + lastName + "\", " + age + ");");
             System.out.printf("User с именем — %s добавлен в базу данных\n", name);
         } catch (SQLException e) {
             System.out.println("Пользователя не удалось добавить");
@@ -58,13 +50,8 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void removeUserById(long id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("DELETE FROM users WHERE id = ");
-        sb.append(id);
-        sb.append(";");
-
         try (Statement statement = util.getConnection().createStatement()) {
-            statement.execute(sb.toString());
+            statement.execute("DELETE FROM users WHERE id = " + id + ";");
             System.out.println("Пользователь успешно удален");
         } catch (SQLException e) {
             System.out.println("Пользователь не удалён");

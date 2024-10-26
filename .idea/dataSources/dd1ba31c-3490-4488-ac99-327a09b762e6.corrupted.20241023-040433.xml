@@ -1031,7 +1031,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="290" parent="1" name="mysqltestbase">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-10-24.08:30:11</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-10-23.12:01:32</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <schema id="291" parent="1" name="performance_schema">
@@ -1068,40 +1068,5 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <table id="300" parent="290" name="users">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb3_general_ci</CollationName>
-    </table>
-    <column id="301" parent="300" name="id">
-      <AutoIncrement>2</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="302" parent="300" name="name">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>varchar(45)|0s</StoredType>
-    </column>
-    <column id="303" parent="300" name="lastName">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>varchar(45)|0s</StoredType>
-    </column>
-    <column id="304" parent="300" name="age">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <index id="305" parent="300" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="306" parent="300" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
   </database-model>
 </dataSource>

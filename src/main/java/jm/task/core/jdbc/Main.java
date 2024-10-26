@@ -14,7 +14,7 @@ public class Main {
         userService.saveUser("Сергей", "Жуков", (byte) 50);
         userService.getAllUsers();
 //        for (int i = 4; i > 0; i--) {
-//            userDaoJDBCImpl.removeUserById(i);
+//            userService.removeUserById(i);
 //        }
         userService.cleanUsersTable();
         userService.dropUsersTable();
