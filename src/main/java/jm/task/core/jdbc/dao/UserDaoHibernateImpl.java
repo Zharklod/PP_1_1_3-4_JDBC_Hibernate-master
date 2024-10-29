@@ -11,11 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
-    private Util util;
-
-    public UserDaoHibernateImpl(Util util) {
-        this.util = util;
-    }
 
     @Override
     public void createUsersTable() {
